@@ -47,6 +47,11 @@ public class BlogSteps extends Step {
         Assert.assertTrue(blogPage.isCommentPostSuccessMessageDisplayed());
     }
 
+    @Then("^I see the Post comment error message is displayed$")
+    public void i_see_the_Post_comment_error_message_is_displayed() throws Throwable {
+        Assert.assertTrue(blogPage.isCommentPostErrorMessageDisplayed());
+    }
+
     @Then("^I see the message \"([^\"]*)\"$")
     public void i_see_the_message(String message) throws Throwable {
         Assert.assertTrue(blogPage.isWelcomeMessageDisplayedWith(message));

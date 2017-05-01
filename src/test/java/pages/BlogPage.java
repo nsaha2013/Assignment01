@@ -42,6 +42,9 @@ public class BlogPage extends Page{
     @FindBy(css = ".cmts-message.cmts-message-success")
     private WebElement postSuccessMessage;
 
+    @FindBy(css = ".cmts-message.cmts-message-error")
+    private WebElement postErrorMessage;
+
     @FindBy(css = ".comments-post-comment")
     private WebElement commentPostSection;
 
@@ -95,6 +98,13 @@ public class BlogPage extends Page{
         waitForElementVisible(commentHeader,60);
         return (postSuccessMessage.isDisplayed() && postSuccessMessage.getText().equalsIgnoreCase("Thanks, your comment has been posted."));
     }
+
+    public boolean isCommentPostErrorMessageDisplayed(){
+        waitForFrameAvailableAndSwitch(blogIframe,120);
+        waitForElementVisible(commentHeader,60);
+        return (postErrorMessage.isDisplayed() && postErrorMessage.getText().equalsIgnoreCase("You need to write your comment before you post it."));
+    }
+
 
     public SignInPage clickOnGlobalSigninButton() throws InterruptedException {
         clickOn(globalSignInButton);
